@@ -1,0 +1,17 @@
+﻿
+# test();
+CALL test
+
+# func(1, 2);
+PUSH 2
+PUSH 1
+CALL func
+
+HALT
+
+# void test() {}
+test: RET
+
+# void func(a, b) { int sum = a + b; }
+func: ADD
+RET

@@ -1,0 +1,20 @@
+﻿
+# i = 10
+# i is stored in 0xFABA
+PUSH 000A
+STOR FABA
+
+# i--
+loop: LOAD FABA
+PUSH 0001
+SUB
+STOR FABA
+
+# i == 0
+JMPZ out
+
+# Loop
+JUMP loop
+
+# Stop program
+out: HALT
