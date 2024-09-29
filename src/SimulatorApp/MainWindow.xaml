@@ -4,24 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SimulatorApp"
+        xmlns:vm="clr-namespace:SimulatorApp.ViewModels"
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance vm:MainViewModel}"
         Title="Simulator" Height="450" Width="800">
         <DockPanel>
                 <Menu DockPanel.Dock="Top">
-                        <MenuItem Header="_File">
-                                <MenuItem Header="_New" />
-                                <MenuItem Header="_Open" />
-                                <MenuItem Header="_Save" />
+                        <MenuItem Header="File">
+                                <MenuItem Header="New" />
+                                <MenuItem Header="Open" />
+                                <MenuItem Header="Save" />
                         </MenuItem>
-                        <MenuItem Header="_Simulator">
-                                <MenuItem Header="_Run" />
-                                <MenuItem Header="_Stop" />
-                                <MenuItem Header="_Reset" />
+                        <MenuItem Header="Simulator">
+                                <MenuItem InputGestureText="F4" Command="{Binding PlayCommand}" Header="Run" />
+                                <MenuItem InputGestureText="F5" Command="{Binding StepCommand}" Header="Step" />
+                                <MenuItem InputGestureText="Ctrl+R" Command="{Binding ResetCommand}" Header="Reset" />
                         </MenuItem>
-                        <MenuItem Header="_About">
-                                <MenuItem Header="_Exit" />
+                        <MenuItem Header="About">
+                                <MenuItem Header="Exit" />
                         </MenuItem>
                 </Menu>
-                <TextBox AcceptsReturn="True" />
+                <StackPanel Margin="2">
+                        <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="0,0,2,0">Cycle: </TextBlock>
+                                <TextBlock Text="{Binding Cycle}"></TextBlock>
+                        </StackPanel>
+                </StackPanel>
         </DockPanel>
 </Window>
